@@ -1,0 +1,396 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String?
+  image         String?
+  emailVerified DateTime?
+  preferredLang String    @default("en")
+  preferredTheme String   @default("system")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  memberships   WorkspaceMember[]
+  auditLogs     AuditLog[]
+  notifications Notification[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
+}
+
+model Workspace {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  mode            String   @default("individual")
+  defaultLang     String   @default("en")
+  defaultCurrency String   @default("USD")
+  logoUrl         String?
+  isDemo          Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  members         WorkspaceMember[]
+  clients         Client[]
+  integrations    Integration[]
+  auditLogs       AuditLog[]
+}
+
+model WorkspaceMember {
+  id          String   @id @default(cuid())
+  role        String
+  joinedAt    DateTime @default(now())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  @@unique([userId, workspaceId])
+}
+
+model Client {
+  id              String   @id @default(cuid())
+  name            String
+  businessType    String
+  country         String
+  currency        String   @default("USD")
+  salesChannel    String
+  status          String   @default("active")
+  reportingLang   String   @default("en")
+  internalNotes   String?
+  clientNotes     String?
+  logoUrl         String?
+  website         String?
+  whatsappNumber  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  workspaceId     String
+  workspace       Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  targets         ClientTarget?
+  campaigns       Campaign[]
+  metricSnapshots MetricSnapshot[]
+  trackingAudits  TrackingAudit[]
+  recommendations Recommendation[]
+  actionItems     ActionItem[]
+  alerts          Alert[]
+  budgetPacings   BudgetPacing[]
+  funnelSnapshots FunnelSnapshot[]
+  reports         Report[]
+  successScores   ClientSuccessScore[]
+  @@index([workspaceId])
+}
+
+model ClientTarget {
+  id                String   @id @default(cuid())
+  monthlyBudget     Float
+  targetCPA         Float?
+  targetCPL         Float?
+  targetROAS        Float?
+  breakEvenROAS     Float?
+  grossMargin       Float?
+  averageOrderValue Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  clientId          String   @unique
+  client            Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Campaign {
+  id             String    @id @default(cuid())
+  externalId     String?
+  name           String
+  objective      String?
+  status         String    @default("active")
+  dailyBudget    Float?
+  startDate      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  clientId       String
+  client         Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  metricSnapshots MetricSnapshot[]
+  @@index([clientId])
+}
+
+model MetricSnapshot {
+  id               String   @id @default(cuid())
+  date             DateTime
+  level            String
+  spend            Float    @default(0)
+  impressions      Int      @default(0)
+  clicks           Int      @default(0)
+  ctr              Float?
+  cpc              Float?
+  cpm              Float?
+  frequency        Float?
+  purchases        Int      @default(0)
+  revenue          Float    @default(0)
+  roas             Float?
+  leads            Int      @default(0)
+  cpa              Float?
+  cpl              Float?
+  addToCart        Int      @default(0)
+  initiateCheckout Int      @default(0)
+  landingPageViews Int      @default(0)
+  whatsappClicks   Int      @default(0)
+  source           String   @default("demo")
+  confidence       String   @default("high")
+  lastSynced       DateTime @default(now())
+  limitation       String?
+  createdAt        DateTime @default(now())
+  clientId         String
+  client           Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  campaignId       String?
+  campaign         Campaign? @relation(fields: [campaignId], references: [id])
+  @@index([clientId, date])
+  @@index([campaignId, date])
+}
+
+model ClientSuccessScore {
+  id                  String   @id @default(cuid())
+  totalScore          Int
+  status              String
+  trackingHealth      Int
+  performanceVsTarget Int
+  budgetUtilization   Int
+  creativeFreshness   Int
+  funnelHealth        Int
+  actionDiscipline    Int
+  mainReason          String?
+  topIssues           Json?
+  nextAction          String?
+  trend               String?
+  source              String   @default("calculated")
+  confidence          String   @default("medium")
+  limitation          String?
+  calculatedAt        DateTime @default(now())
+  clientId            String
+  client              Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, calculatedAt])
+}
+
+model TrackingAudit {
+  id                String   @id @default(cuid())
+  priorityScore     Int
+  pixelInstalled    Boolean?
+  capiStatus        String?
+  purchaseEvent     String?
+  leadEvent         String?
+  addToCartEvent    String?
+  checkoutEvent     String?
+  deduplication     String?
+  utmConsistency    String?
+  criticalIssues    Json?
+  warnings          Json?
+  goodSignals       Json?
+  fixes             Json?
+  source            String   @default("audit")
+  confidence        String   @default("medium")
+  limitation        String?
+  auditedAt         DateTime @default(now())
+  clientId          String
+  client            Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, auditedAt])
+}
+
+model Recommendation {
+  id              String    @id @default(cuid())
+  type            String
+  action          String
+  reason          String
+  evidence        Json?
+  riskLevel       String
+  confidenceScore Int
+  oldBudget       Float?
+  suggestedBudget Float?
+  expectedImpact  String?
+  status          String    @default("pending")
+  reviewedBy      String?
+  reviewedAt      DateTime?
+  source          String    @default("rule_engine")
+  confidence      String    @default("medium")
+  limitation      String?
+  createdAt       DateTime  @default(now())
+  clientId        String
+  client          Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, status])
+}
+
+model ActionItem {
+  id              String    @id @default(cuid())
+  type            String
+  title           String
+  description     String?
+  priority        String
+  impact          String?
+  risk            String?
+  reason          String?
+  status          String    @default("new")
+  assignedTo      String?
+  dueDate         DateTime?
+  completedAt     DateTime?
+  source          String    @default("system")
+  confidence      String    @default("medium")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  clientId        String
+  client          Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, status])
+}
+
+model Alert {
+  id                String    @id @default(cuid())
+  type              String
+  severity          String
+  title             String
+  message           String
+  metricAffected    String?
+  currentValue      String?
+  normalValue       String?
+  possibleReason    String?
+  recommendedAction String?
+  status            String    @default("active")
+  source            String    @default("anomaly_detection")
+  confidence        String    @default("medium")
+  createdAt         DateTime  @default(now())
+  clientId          String
+  client            Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, status])
+}
+
+model BudgetPacing {
+  id                 String   @id @default(cuid())
+  month              String
+  monthlyBudget      Float
+  spendToDate        Float
+  expectedSpendToday Float
+  remainingBudget    Float
+  requiredDailySpend Float
+  projectedMonthEnd  Float
+  pacingStatus       String
+  pacingPercentage   Float
+  source             String   @default("calculated")
+  confidence         String   @default("high")
+  limitation         String?
+  calculatedAt       DateTime @default(now())
+  clientId           String
+  client             Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, month])
+}
+
+model FunnelSnapshot {
+  id               String   @id @default(cuid())
+  date             DateTime
+  impressions      Int      @default(0)
+  clicks           Int      @default(0)
+  landingPageViews Int      @default(0)
+  addToCart        Int      @default(0)
+  initiateCheckout Int      @default(0)
+  purchases        Int      @default(0)
+  revenue          Float    @default(0)
+  whatsappClicks   Int      @default(0)
+  qualifiedLeads   Int      @default(0)
+  diagnosis        Json?
+  source           String   @default("demo")
+  confidence       String   @default("medium")
+  limitation       String?
+  createdAt        DateTime @default(now())
+  clientId         String
+  client           Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  @@index([clientId, date])
+}
+
+model Report {
+  id            String    @id @default(cuid())
+  title         String
+  type          String
+  language      String    @default("en")
+  periodStart   DateTime
+  periodEnd     DateTime
+  status        String    @default("draft")
+  content       Json
+  shareableLink String?   @unique
+  approvedBy    String?
+  approvedAt    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  clientId      String
+  client        Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Integration {
+  id           String    @id @default(cuid())
+  platform     String
+  status       String    @default("disconnected")
+  externalId   String?
+  metadata     Json?
+  lastSyncAt   DateTime?
+  errorMessage String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  workspaceId  String
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  action      String
+  entityType  String
+  entityId    String?
+  details     Json?
+  createdAt   DateTime @default(now())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  @@index([workspaceId, createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  type      String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, read])
+}
