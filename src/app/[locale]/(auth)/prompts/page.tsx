@@ -20,17 +20,18 @@ const prompts = [
   { id: 8, title: "تقرير أداء أسبوعي", category: "Reports", language: "ar", prompt: "اكتب ملخص تقرير أسبوعي لعميل [الاسم]. الفترة: [التواريخ]. يشمل: ملخص تنفيذي، المقاييس الرئيسية مقابل الأهداف، الإنجازات، التحديات، وخطة الأسبوع القادم.", tags: ["تقارير", "عميل"] },
 ];
 
-const categories = ["All", "Copywriting", "Strategy", "Analysis", "Creative", "Research", "Reports"];
+const categories = ["all", "copywriting", "strategy", "analysis", "creative", "research", "reports"] as const;
+type CategoryKey = typeof categories[number];
 
 export default function PromptsPage() {
   const t = useTranslations("pages.prompts");
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("all");
   const [copiedId, setCopiedId] = useState<number | null>(null);
 
   const filtered = prompts.filter((p) => {
     const matchesSearch = p.title.toLowerCase().includes(search.toLowerCase()) || p.prompt.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+    const matchesCategory = activeCategory === "all" || p.category.toLowerCase() === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -48,12 +49,12 @@ export default function PromptsPage() {
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
-          <Input placeholder="Search prompts..." value={search} onChange={(e) => setSearch(e.target.value)} className="ps-9" />
+          <Input placeholder={t("searchPlaceholder")} value={search} onChange={(e) => setSearch(e.target.value)} className="ps-9" />
         </div>
         <div className="flex gap-2 flex-wrap">
           {categories.map((cat) => (
             <Button key={cat} size="sm" variant={activeCategory === cat ? "default" : "ghost"} onClick={() => setActiveCategory(cat)}>
-              {cat}
+              {t(`categories.${cat}`)}
             </Button>
           ))}
         </div>
@@ -66,18 +67,18 @@ export default function PromptsPage() {
             <CardContent className="p-5">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-teal" />
+                  <Sparkles className="h-4 w-4 text-sky-500" />
                   <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">{prompt.title}</h3>
                 </div>
                 <Badge variant="secondary">{prompt.language === "ar" ? "عربي" : "EN"}</Badge>
               </div>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-3 mb-3 font-mono bg-neutral-50 dark:bg-neutral-800/50 p-2 rounded">{prompt.prompt}</p>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-3 mb-3 font-mono bg-neutral-50 dark:bg-[#0F1419] p-2 rounded">{prompt.prompt}</p>
               <div className="flex items-center justify-between">
                 <div className="flex gap-1.5">
                   {prompt.tags.map((tag) => <Badge key={tag} variant="secondary" className="text-[10px]">{tag}</Badge>)}
                 </div>
                 <Button size="sm" variant="ghost" onClick={() => handleCopy(prompt.id, prompt.prompt)}>
-                  {copiedId === prompt.id ? <CheckCircle2 className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                  {copiedId === prompt.id ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
             </CardContent>

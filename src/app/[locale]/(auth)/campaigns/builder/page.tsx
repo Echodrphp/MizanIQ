@@ -21,13 +21,13 @@ export default function CampaignBuilderPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t("title")} description={t("description")}>
-        <Button size="sm"><Plus className="h-4 w-4 me-1" /> New Campaign</Button>
+        <Button size="sm"><Plus className="h-4 w-4 me-1" /> {t("newCampaign")}</Button>
       </PageHeader>
 
       {/* Templates */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Megaphone className="h-5 w-5 text-teal" />Campaign Templates</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Megaphone className="h-5 w-5 text-sky-500" />{t("templates")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -53,7 +53,7 @@ export default function CampaignBuilderPage() {
         </CardContent>
       </Card>
 
-      <ComingSoon title="Full Campaign Builder" description="Create structured campaigns with AI-powered audience suggestions, budget allocation, and creative recommendations. Coming in the next update." />
+      <ComingSoon title={t("comingSoon.title")} description={t("comingSoon.description")} />
     </div>
   );
 }

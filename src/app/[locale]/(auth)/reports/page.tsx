@@ -17,9 +17,9 @@ const reports = [
 ];
 
 const statusConfig = {
-  ready: { label: "Ready", badge: "success" as const },
-  draft: { label: "Draft", badge: "warning" as const },
-  scheduled: { label: "Scheduled", badge: "secondary" as const },
+  ready: { badge: "success" as const },
+  draft: { badge: "warning" as const },
+  scheduled: { badge: "secondary" as const },
 };
 
 export default function ReportsPage() {
@@ -28,21 +28,21 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       <PageHeader title={t("title")} description={t("description")}>
-        <Button size="sm"><Plus className="h-4 w-4 me-1" /> Generate Report</Button>
+        <Button size="sm"><Plus className="h-4 w-4 me-1" /> {t("generate")}</Button>
       </PageHeader>
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><FileText className="h-5 w-5 text-teal" />Reports Library</CardTitle>
+          <CardTitle className="flex items-center gap-2"><FileText className="h-5 w-5 text-sky-500" />{t("library")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
             {reports.map((report) => {
               const sConfig = statusConfig[report.status];
               return (
-                <div key={report.id} className="flex items-center gap-4 p-4 rounded-lg border border-neutral-100 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-teal/10">
-                    <FileText className="h-5 w-5 text-teal" />
+                <div key={report.id} className="flex items-center gap-4 p-4 rounded-lg border border-neutral-100 dark:border-[#2A3544] hover:bg-neutral-50 dark:hover:bg-[#0F1419] transition-colors">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sky-100 dark:bg-sky-500/10">
+                    <FileText className="h-5 w-5 text-sky-600 dark:text-sky-400" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-semibold text-neutral-900 dark:text-white truncate">{report.title}</h4>
@@ -51,7 +51,7 @@ export default function ReportsPage() {
                       <span className="text-xs text-neutral-500 flex items-center gap-1"><Calendar className="h-3 w-3" />{report.date}</span>
                     </div>
                   </div>
-                  <Badge variant={sConfig.badge}>{sConfig.label}</Badge>
+                  <Badge variant={sConfig.badge}>{t(`status.${report.status}`)}</Badge>
                   <div className="flex gap-1">
                     {report.status === "ready" && (
                       <>
