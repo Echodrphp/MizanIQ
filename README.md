@@ -287,22 +287,28 @@ Demo accounts:
 
 ## Sprint Status
 
-**Sprint 1 — Foundation: ✅ Complete**
+**Sprint 1 — Foundation: ✅ Complete & Audited**
 
 | Item | Status |
 | --- | --- |
 | Next.js 16 / React 19 / Tailwind 4 / next-intl 4 setup | ✅ |
 | Prisma schema for full MVP entities | ✅ |
-| NextAuth v5 (Credentials) wiring | ✅ |
-| Bilingual landing page | ✅ |
+| NextAuth v5 (Credentials) wiring with **real** signin + demo bypass | ✅ |
+| Route protection on `(auth)` layout (server-side `auth()` check) | ✅ |
+| `SessionProvider` mounted at locale layout | ✅ |
+| Logout button in topbar | ✅ |
+| Bilingual landing page (real, not a redirect) | ✅ |
 | AppShell (sidebar + topbar) responsive layout | ✅ |
 | 16 app routes scaffolded with demo data | ✅ |
-| Light/Dark theme system + brand colors | ✅ |
-| RTL Arabic support throughout | ✅ |
+| Light/Dark theme system + brand colors from logo | ✅ |
+| RTL Arabic support throughout (every page) | ✅ |
 | Honest-intelligence metadata in schema + UI | ✅ |
-| Demo seed script | ✅ |
-| Build & lint clean | ✅ |
-| README + env example | ✅ |
+| Demo seed script (workspace + 3 clients + 7 days metrics + alerts + recs) | ✅ |
+| Build clean: 0 errors, 0 warnings | ✅ |
+| Lint clean: 0 errors, 0 warnings | ✅ |
+| `next/font` + `next/image` (no `<link>` font warnings, no `<img>`) | ✅ |
+| Next.js 16 `proxy.ts` convention (renamed from `middleware.ts`) | ✅ |
+| All user-facing strings extracted to i18n | ✅ |
 
 ---
 
