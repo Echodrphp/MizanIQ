@@ -3,6 +3,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Inter, Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { AuthSessionProvider } from "@/components/providers/session-provider";
 import { routing } from "@/i18n/routing";
 import { localeDirection } from "@/i18n/config";
 
@@ -30,7 +31,9 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     <html lang={locale} dir={dir} suppressHydrationWarning className={`${inter.variable} ${cairo.variable}`}>
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          <AuthSessionProvider>
+            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          </AuthSessionProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -15,10 +15,16 @@
     "skip": "تخطي",
     "viewAll": "عرض الكل",
     "comingSoon": "قريباً",
-    "demoMode": "وضع العرض",
+    "demoMode": "وضع تجريبي",
+    "demoData": "بيانات تجريبية",
     "approve": "موافقة",
     "reject": "رفض",
-    "dismiss": "تجاهل"
+    "dismiss": "تجاهل",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "switchLanguage": "تبديل اللغة",
+    "toggleTheme": "تبديل المظهر",
+    "notifications": "الإشعارات"
   },
   "landing": {
     "nav": {
@@ -151,7 +157,22 @@
     "signupTitle": "أنشئ حسابك في MizanIQ",
     "signupSubtitle": "ابدأ باتخاذ قرارات إعلانية أذكى اليوم",
     "demoAccess": "جرّب الوضع التجريبي",
-    "demoDescription": "استكشف مع بيانات تجريبية — بدون تسجيل"
+    "demoDescription": "استكشف مع بيانات تجريبية — بدون تسجيل",
+    "orEmailLogin": "أو سجّل الدخول بالبريد",
+    "loading": "جاري التحميل...",
+    "creating": "جاري الإنشاء...",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "brand": {
+      "heroTitle1": "ذكاء اصطناعي متوازن",
+      "heroTitle2": "لقرارات إعلانية أذكى",
+      "heroSubtitle": "مركز قيادة شفاف لإدارة إعلاناتك. اعرف ما تصلحه، تكبّره، توقفه، أو تقدمه في التقارير — بثقة كاملة.",
+      "pillar1": "ذكاء صادق",
+      "pillar2": "عربي + إنجليزي",
+      "pillar3": "جاهز للوكالات",
+      "rights": "جميع الحقوق محفوظة."
+    }
   },
   "dashboard": {
     "welcome": "مرحباً بعودتك",

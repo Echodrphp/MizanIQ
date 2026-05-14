@@ -16,9 +16,15 @@
     "viewAll": "View All",
     "comingSoon": "Coming Soon",
     "demoMode": "Demo Mode",
+    "demoData": "Demo Data",
     "approve": "Approve",
     "reject": "Reject",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLanguage": "Switch language",
+    "toggleTheme": "Toggle theme",
+    "notifications": "Notifications"
   },
   "landing": {
     "nav": {
@@ -151,7 +157,22 @@
     "signupTitle": "Create your MizanIQ account",
     "signupSubtitle": "Start making smarter ad decisions today",
     "demoAccess": "Try Demo Mode",
-    "demoDescription": "Explore with pre-loaded demo data — no signup required"
+    "demoDescription": "Explore with pre-loaded demo data — no signup required",
+    "orEmailLogin": "or login with email",
+    "loading": "Loading...",
+    "creating": "Creating...",
+    "invalidCredentials": "Invalid email or password.",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "brand": {
+      "heroTitle1": "Balanced AI Intelligence",
+      "heroTitle2": "for Smarter Ad Decisions",
+      "heroSubtitle": "Your honest media buying command center. Know what to fix, scale, pause, or report — with confidence.",
+      "pillar1": "Honest Intelligence",
+      "pillar2": "Arabic + English",
+      "pillar3": "Agency Ready",
+      "rights": "All rights reserved."
+    }
   },
   "dashboard": {
     "welcome": "Welcome back",
