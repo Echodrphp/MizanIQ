@@ -288,11 +288,16 @@
       }
     },
     "performance": { "title": "Performance Analytics", "description": "Deep dive into campaign metrics across all platforms." },
-    "tracking": { "title": "Tracking Audit", "description": "Monitor pixel health and conversion tracking accuracy." },
+    "tracking": { "title": "Tracking Audit", "description": "Monitor pixel health and conversion tracking accuracy.", "rescan": "Re-scan All", "tableTitle": "Pixel & Event Status", "headers": { "client": "Client", "platform": "Platform", "event": "Event", "status": "Status", "lastFired": "Last Fired", "dailyCount": "Daily Count" }, "summary": { "active": "Active Events", "degraded": "Degraded", "broken": "Broken" }, "status": { "active": "Active", "degraded": "Degraded", "broken": "Broken" } },
     "funnel": { "title": "Funnel Analyzer", "description": "Visualize and optimize your conversion funnels." },
-    "budgetRec": { "title": "Budget Recommendations", "description": "AI-powered budget allocation suggestions." },
+    "budgetRec": { "title": "Budget Recommendations", "description": "AI-powered budget allocation suggestions.", "summary": { "scale": "Scale Opportunities", "reduce": "Reduce Suggestions", "pause": "Pause Recommendations" }, "buttons": { "approve": "Approve", "dismiss": "Dismiss" }, "labels": { "confidence": "confidence" }, "priority": { "high": "high", "medium": "medium", "low": "low" }, "items": [
+      { "type": "scale", "client": "Al Reda Steel", "campaign": "Lead Gen — Broad Interest", "action": "Increase budget by 20%", "reason": "CPL 40% below target for 7 consecutive days. Stable performance with room to scale.", "impact": "+$10,000 monthly budget → estimated +62 leads", "confidence": "high", "priority": "high" },
+      { "type": "reduce", "client": "Level Egypt", "campaign": "Retargeting — Cart Abandoners", "action": "Reduce budget by 30%", "reason": "Frequency > 4.2, diminishing returns. Audience saturation detected.", "impact": "-$4,500 monthly → reallocate to prospecting", "confidence": "medium", "priority": "medium" },
+      { "type": "pause", "client": "Smart Home Damietta", "campaign": "Awareness — Video Views", "action": "Pause campaign", "reason": "No measurable impact on lead volume. Tracking issues make attribution unreliable.", "impact": "Save $2,000/month until tracking is fixed", "confidence": "medium", "priority": "high" },
+      { "type": "scale", "client": "Level Egypt", "campaign": "Prospecting — Lookalike 1%", "action": "Increase budget by 15%", "reason": "ROAS 4.2x (above 4.0 target) for 5 days. Strong creative performance.", "impact": "+$3,000 monthly → estimated +$12,600 revenue", "confidence": "medium", "priority": "medium" }
+    ] },
     "budgetPacing": { "title": "Budget Pacing", "description": "Track spending velocity against monthly targets." },
-    "actions": { "title": "Action Center", "description": "Prioritized actions to improve campaign performance." },
+    "actions": { "title": "Action Center", "description": "Prioritized actions to improve campaign performance.", "filter": "Filter", "tableTitle": "All Actions", "summary": { "critical": "Critical", "high": "High Priority", "medium": "Medium", "completed": "Completed" }, "buttons": { "takeAction": "Take Action", "dismiss": "Dismiss" }, "status": { "new": "New", "in_progress": "In Progress", "waiting_approval": "Waiting Approval", "completed": "Completed", "dismissed": "Dismissed" }, "priority": { "critical": "critical", "high": "high", "medium": "medium", "low": "low" } },
     "campaignBuilder": { "title": "Campaign Builder", "description": "Create and structure campaigns with best practices." },
     "naming": { "title": "Naming & UTM", "description": "Standardize campaign naming and UTM parameters." },
     "testing": { "title": "Creative Testing", "description": "Plan and track A/B tests for ad creatives." },
