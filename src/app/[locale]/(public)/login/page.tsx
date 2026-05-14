@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import { Logo } from "@/components/shared/logo";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -25,10 +26,7 @@ export default function LoginPage() {
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between bg-navy p-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10"><div className="absolute top-20 -left-20 w-80 h-80 rounded-full bg-teal blur-3xl" /><div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-cyan blur-3xl" /></div>
         <div className="relative z-10 flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-teal to-cyan flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M 7 16 A 7 7 0 0 1 17 16" strokeLinecap="round" /><line x1="12" y1="15" x2="12" y2="7" strokeLinecap="round" /></svg>
-          </div>
-          <span className="text-2xl font-bold text-white">Mizan<span className="text-teal">IQ</span></span>
+          <Logo size="lg" variant="dark" />
         </div>
         <div className="relative z-10 space-y-6">
           <h1 className="text-4xl font-bold text-white leading-tight">Balanced AI Intelligence<br /><span className="text-teal">for Smarter Ad Decisions</span></h1>
@@ -46,7 +44,7 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-6 bg-background dark:bg-background-dark">
         <div className="w-full max-w-md space-y-8">
           <div className="lg:hidden flex justify-center mb-8">
-            <span className="text-xl font-bold text-neutral-900 dark:text-white">Mizan<span className="text-teal">IQ</span></span>
+            <Logo size="md" />
           </div>
           <div className="text-center lg:text-start">
             <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">{t("loginTitle")}</h2>

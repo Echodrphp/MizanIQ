@@ -1,0 +1,37 @@
+<svg viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- === ICON PART (for light backgrounds) === -->
+  <!-- Gauge arc - dark charcoal/navy -->
+  <path d="M 6 48 A 25 25 0 0 1 56 48" stroke="#2D3748" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+  <!-- Tick marks on left side of gauge -->
+  <line x1="9" y1="38" x2="14" y2="40" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="12" y1="29" x2="17" y2="31" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="19" y1="21" x2="23" y2="24" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="29" y1="17" x2="30" y2="22" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Cyan/sky blue circuit arc (right portion) -->
+  <path d="M 35 15 A 25 25 0 0 1 56 48" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Circuit nodes on cyan arc -->
+  <circle cx="36" cy="16" r="2.2" fill="#38BDF8"/>
+  <circle cx="44" cy="14" r="2.2" fill="#38BDF8"/>
+  <circle cx="51" cy="18" r="2" fill="#38BDF8"/>
+  <circle cx="56" cy="26" r="1.8" fill="#38BDF8"/>
+  <!-- Circuit connection lines -->
+  <line x1="36" y1="16" x2="44" y2="14" stroke="#38BDF8" stroke-width="1.3"/>
+  <line x1="44" y1="14" x2="51" y2="18" stroke="#38BDF8" stroke-width="1.3"/>
+  <line x1="51" y1="18" x2="56" y2="26" stroke="#38BDF8" stroke-width="1.3"/>
+  <!-- Trending arrow going up-right -->
+  <polyline points="18,44 29,33 38,38 52,22" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Arrow head -->
+  <polygon points="52,22 45,24 47,30" fill="#38BDF8"/>
+  <!-- Needle pivot circle -->
+  <circle cx="31" cy="48" r="4" fill="white" stroke="#4A5568" stroke-width="1.8"/>
+  <!-- Triangle needle base -->
+  <polygon points="31,50 23,60 39,60" fill="#4A5568"/>
+  <!-- Triangle lighter highlight -->
+  <polygon points="31,50 27,60 35,60" fill="#718096" opacity="0.35"/>
+
+  <!-- === TEXT PART === -->
+  <!-- "Mizan" in dark charcoal -->
+  <text x="70" y="44" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="29" fill="#2D3748" letter-spacing="-0.5">Mizan</text>
+  <!-- "IQ" in bright sky blue -->
+  <text x="170" y="44" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="29" fill="#38BDF8" letter-spacing="-0.5">IQ</text>
+</svg>

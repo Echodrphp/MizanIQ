@@ -1,9 +1,24 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Inter, Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { routing } from "@/i18n/routing";
 import { localeDirection } from "@/i18n/config";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-cairo",
+  display: "swap",
+});
 
 export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -12,12 +27,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const dir = localeDirection[locale as "en" | "ar"];
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-      </head>
+    <html lang={locale} dir={dir} suppressHydrationWarning className={`${inter.variable} ${cairo.variable}`}>
       <body className="min-h-screen antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>

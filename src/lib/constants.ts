@@ -2,13 +2,13 @@ export const APP_NAME = "MizanIQ";
 export const APP_TAGLINE = "Balanced Intelligence for Smarter Ad Decisions";
 
 export const COLORS = {
-  navy: "#061A2F", navyLight: "#0C2A47", navyDark: "#040E1A",
-  teal: "#00A6A6", tealLight: "#00C4C4", tealDark: "#008585",
-  cyan: "#19C7D4", cyanLight: "#4DD9E3",
-  success: "#16A34A", warning: "#F59E0B", danger: "#DC2626", info: "#3B82F6",
+  navy: "#2D3748", navyLight: "#4A5568", navyDark: "#1A202C",
+  teal: "#38BDF8", tealLight: "#7DD3FC", tealDark: "#0EA5E9",
+  cyan: "#22D3EE", cyanLight: "#67E8F9",
+  success: "#10B981", warning: "#F59E0B", danger: "#EF4444", info: "#3B82F6",
 } as const;
 
-export const CHART_COLORS = ["#00A6A6", "#19C7D4", "#061A2F", "#3B82F6", "#8B5CF6", "#F59E0B", "#EC4899"];
+export const CHART_COLORS = ["#38BDF8", "#22D3EE", "#2D3748", "#3B82F6", "#8B5CF6", "#F59E0B", "#EC4899"];
 
 export const SCORE_WEIGHTS = {
   trackingHealth: 20, performanceVsTarget: 25, budgetUtilization: 15,

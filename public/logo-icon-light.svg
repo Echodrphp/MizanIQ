@@ -1,0 +1,28 @@
+<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gauge arc - medium gray -->
+  <path d="M 8 48 A 24 24 0 0 1 56 48" stroke="#8899A6" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Tick marks -->
+  <line x1="11" y1="38" x2="15" y2="40" stroke="#8899A6" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="14" y1="30" x2="18" y2="32" stroke="#8899A6" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="21" y1="23" x2="24" y2="26" stroke="#8899A6" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="30" y1="20" x2="31" y2="24" stroke="#8899A6" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Light blue circuit arc -->
+  <path d="M 36 18 A 24 24 0 0 1 56 48" stroke="#7EC8D9" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Circuit dots -->
+  <circle cx="37" cy="18" r="2" fill="#7EC8D9"/>
+  <circle cx="45" cy="17" r="2" fill="#7EC8D9"/>
+  <circle cx="51" cy="21" r="1.8" fill="#7EC8D9"/>
+  <circle cx="55" cy="28" r="1.8" fill="#7EC8D9"/>
+  <!-- Circuit lines -->
+  <line x1="37" y1="18" x2="45" y2="17" stroke="#7EC8D9" stroke-width="1.2"/>
+  <line x1="45" y1="17" x2="51" y2="21" stroke="#7EC8D9" stroke-width="1.2"/>
+  <line x1="51" y1="21" x2="55" y2="28" stroke="#7EC8D9" stroke-width="1.2"/>
+  <!-- Trending arrow -->
+  <polyline points="20,43 30,34 38,38 50,24" stroke="#7EC8D9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <polygon points="50,24 44,26 46,31" fill="#7EC8D9"/>
+  <!-- Needle pivot -->
+  <circle cx="32" cy="48" r="3.5" fill="#B0BEC5" stroke="#8899A6" stroke-width="1.5"/>
+  <!-- Triangle needle -->
+  <polygon points="32,50 26,60 38,60" fill="#8899A6"/>
+  <polygon points="32,50 29,60 35,60" fill="#B0BEC5" opacity="0.4"/>
+</svg>

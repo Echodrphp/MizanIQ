@@ -20,6 +20,91 @@
     "reject": "Reject",
     "dismiss": "Dismiss"
   },
+  "landing": {
+    "nav": {
+      "features": "Features",
+      "howItWorks": "How It Works",
+      "pricing": "Pricing",
+      "login": "Log In",
+      "getStarted": "Get Started"
+    },
+    "hero": {
+      "badge": "AI-Powered Media Buying Intelligence",
+      "title1": "Make",
+      "titleHighlight": "Smarter Ad Decisions",
+      "title2": "with Honest Intelligence",
+      "subtitle": "The bilingual command center for media buyers. Know what to fix, scale, pause, or report — with full transparency on data confidence.",
+      "cta": "Start Free Trial",
+      "demo": "Try Demo",
+      "noCreditCard": "No credit card required • Free 14-day trial"
+    },
+    "features": {
+      "badge": "Features",
+      "title": "Everything You Need to Win at Media Buying",
+      "subtitle": "Built specifically for agencies and media buyers managing multiple clients across Meta, Google, and TikTok.",
+      "performance": { "title": "Performance Analytics", "desc": "Real-time ROAS, CPA, and revenue tracking across all clients with trend analysis and anomaly detection." },
+      "tracking": { "title": "Tracking Audit", "desc": "Automated pixel health checks. Know instantly when tracking breaks before it costs you money." },
+      "actions": { "title": "Smart Action Center", "desc": "AI-prioritized daily actions. Know exactly what to fix, scale, or pause — with reasoning." },
+      "bilingual": { "title": "Arabic + English", "desc": "Full RTL support with native Arabic interface. Built for MENA agencies from day one." },
+      "clients": { "title": "Multi-Client Management", "desc": "Health scores, alerts, and performance overview for all your clients in one dashboard." },
+      "budget": { "title": "Budget Intelligence", "desc": "Pacing alerts, reallocation recommendations, and ROI forecasting to maximize every dollar." }
+    },
+    "howItWorks": {
+      "badge": "Simple Setup",
+      "title": "Up and Running in Minutes",
+      "step1": { "title": "Connect Your Accounts", "desc": "Link your Meta, Google, or TikTok ad accounts securely. We only read data — never modify campaigns." },
+      "step2": { "title": "Get Instant Insights", "desc": "Our AI analyzes your campaigns and generates health scores, alerts, and prioritized actions." },
+      "step3": { "title": "Make Better Decisions", "desc": "Act on transparent recommendations with full confidence levels and data source visibility." }
+    },
+    "honest": {
+      "badge": "Honest Intelligence",
+      "title": "Transparency Built Into Every Recommendation",
+      "subtitle": "Unlike other tools that give you black-box suggestions, MizanIQ shows you exactly where data comes from and how confident we are.",
+      "point1": "Every metric shows its data source (API, estimated, manual)",
+      "point2": "Confidence levels on all recommendations (High, Medium, Low)",
+      "point3": "Clear limitations disclosed — no hidden assumptions",
+      "point4": "Decision-support, not auto-pilot — you stay in control",
+      "disclaimer": "Recommendations are decision-support, not guaranteed results."
+    },
+    "pricing": {
+      "badge": "Pricing",
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Start free, scale as you grow. No hidden fees.",
+      "month": "mo",
+      "popular": "Most Popular",
+      "choosePlan": "Choose Plan",
+      "starter": { "name": "Starter", "price": "$49", "desc": "For freelance media buyers", "f1": "Up to 3 clients", "f2": "Basic performance dashboard", "f3": "Daily action alerts", "f4": "Email support" },
+      "pro": { "name": "Pro", "price": "$149", "desc": "For growing agencies", "f1": "Up to 15 clients", "f2": "Full analytics suite", "f3": "Budget intelligence", "f4": "Tracking audit", "f5": "Priority support" },
+      "agency": { "name": "Agency", "price": "$349", "desc": "For large agencies", "f1": "Unlimited clients", "f2": "White-label reports", "f3": "Custom integrations", "f4": "Dedicated account manager", "f5": "API access" }
+    },
+    "cta": {
+      "title": "Ready to Make Smarter Ad Decisions?",
+      "subtitle": "Join agencies across MENA who trust MizanIQ for honest, actionable media buying intelligence.",
+      "start": "Start Free Trial",
+      "demo": "Try Demo First"
+    },
+    "preview": {
+      "totalSpend": "Total Spend",
+      "revenue": "Revenue",
+      "avgRoas": "Avg. ROAS",
+      "clients": "Clients",
+      "stable": "Stable"
+    },
+    "honestCard": {
+      "title": "ROAS Recommendation",
+      "confidence": "Medium Confidence",
+      "quote": "Scale budget by 20% on Campaign X",
+      "source": "Source",
+      "sourceValue": "Meta Ads API",
+      "confLabel": "Confidence",
+      "confValue": "Medium — 5 days data",
+      "limitation": "Limitation",
+      "limitationValue": "Attribution window: 7-day click"
+    },
+    "footer": {
+      "rights": "All rights reserved."
+    }
+  },
   "nav": {
     "dashboard": "Dashboard",
     "clients": "Clients",
@@ -38,9 +123,18 @@
     "prompts": "Prompt Library",
     "whatsapp": "WhatsApp CRM",
     "competitors": "Competitors",
-    "reports": "Reports",
+    "reports": "VIP Reports",
     "docs": "Documentation",
-    "settings": "Settings"
+    "settings": "Settings",
+    "demoMode": "Demo Mode",
+    "sections": {
+      "performance": "Performance",
+      "budget": "Budget",
+      "actions": "Actions",
+      "campaigns": "Campaigns",
+      "aiTools": "AI Tools",
+      "reports": "Reports"
+    }
   },
   "auth": {
     "login": "Log In",
@@ -67,7 +161,41 @@
     "healthyClients": "Healthy",
     "todayActions": "Today's Actions",
     "budgetOverview": "Budget Pacing Overview",
-    "activeAlerts": "Active Alerts"
+    "activeAlerts": "Active Alerts",
+    "demoMode": "Demo Mode",
+    "clientHealth": "Client Health",
+    "viewAllActions": "View All Actions",
+    "demoUser": "Demo User",
+    "disclaimer": "Recommendations are decision-support, not guaranteed results. All actions require manual approval.",
+    "metrics": {
+      "totalSpend": "Total Spend",
+      "revenue": "Revenue",
+      "avgRoas": "Avg. ROAS",
+      "activeClients": "Active Clients"
+    },
+    "issues": {
+      "creativeFatigue": "Creative fatigue detected",
+      "trackingPixel": "Tracking pixel issues",
+      "scaling": "On track — scaling opportunity"
+    },
+    "actions": {
+      "pauseAdSet": "Pause underperforming ad set",
+      "fixPixel": "Fix Meta Pixel event",
+      "scaleCampaign": "Scale winning campaign",
+      "refreshCreatives": "Refresh creative angles",
+      "reasons": {
+        "cpaAboveTarget": "CPA 2.3x above target for 4 days",
+        "purchaseMissing": "Purchase event missing since May 10",
+        "cplBelowTarget": "CPL 40% below target, stable 7 days",
+        "frequencyHigh": "Frequency > 3.5, CTR declining"
+      }
+    },
+    "priority": {
+      "critical": "critical",
+      "high": "high",
+      "medium": "medium",
+      "low": "low"
+    }
   },
   "clients": {
     "title": "Clients",
@@ -109,5 +237,48 @@
     "ctr": "CTR",
     "cpc": "CPC",
     "cpm": "CPM"
+  },
+  "pages": {
+    "clients": { "title": "Clients Overview", "description": "Monitor all your clients' health and performance at a glance.", "addClient": "Add Client", "nextAction": "Next Action", "budget": "Budget", "targetCpa": "Target CPA", "status": { "critical": "critical", "needs_attention": "needs attention", "healthy": "healthy" }, "trend": { "improving": "improving", "stable": "stable", "declining": "declining" } },
+    "demoClients": {
+      "levelEgypt": {
+        "businessType": "ecommerce",
+        "salesChannel": "shopify",
+        "country": "Egypt",
+        "mainReason": "Creative fatigue — top creatives declining",
+        "issues": ["Frequency > 3.5", "CPA 18% above target", "AddToCart drop"],
+        "nextAction": "Refresh top 3 creatives"
+      },
+      "smartHome": {
+        "businessType": "whatsapp",
+        "salesChannel": "whatsapp",
+        "country": "Egypt",
+        "mainReason": "Pixel tracking broken — Purchase event missing",
+        "issues": ["Pixel event not firing", "WhatsApp leads 40% unqualified", "Budget underpacing at 45%"],
+        "nextAction": "Fix Meta Pixel immediately"
+      },
+      "alReda": {
+        "businessType": "lead_gen",
+        "salesChannel": "lead_form",
+        "country": "Egypt",
+        "mainReason": "Strong performance — scaling opportunity",
+        "issues": ["Could increase budget", "New creative angles needed", "Landing page A/B test recommended"],
+        "nextAction": "Increase budget 20% on top campaign"
+      }
+    },
+    "performance": { "title": "Performance Analytics", "description": "Deep dive into campaign metrics across all platforms." },
+    "tracking": { "title": "Tracking Audit", "description": "Monitor pixel health and conversion tracking accuracy." },
+    "funnel": { "title": "Funnel Analyzer", "description": "Visualize and optimize your conversion funnels." },
+    "budgetRec": { "title": "Budget Recommendations", "description": "AI-powered budget allocation suggestions." },
+    "budgetPacing": { "title": "Budget Pacing", "description": "Track spending velocity against monthly targets." },
+    "actions": { "title": "Action Center", "description": "Prioritized actions to improve campaign performance." },
+    "campaignBuilder": { "title": "Campaign Builder", "description": "Create and structure campaigns with best practices." },
+    "naming": { "title": "Naming & UTM", "description": "Standardize campaign naming and UTM parameters." },
+    "testing": { "title": "Creative Testing", "description": "Plan and track A/B tests for ad creatives." },
+    "prompts": { "title": "Prompt Library", "description": "AI prompts for copywriting, strategy, and analysis." },
+    "creative": { "title": "Creative Intelligence", "description": "Analyze creative performance and fatigue signals." },
+    "reports": { "title": "VIP Reports", "description": "Generate professional client-ready reports." },
+    "settings": { "title": "Settings", "description": "Manage your account, team, and integrations." },
+    "docs": { "title": "Documentation", "description": "Guides, tutorials, and platform documentation." }
   }
 }

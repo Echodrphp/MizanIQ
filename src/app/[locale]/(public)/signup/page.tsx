@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Logo } from "@/components/shared/logo";
 import Link from "next/link";
 
 export default function SignupPage() {
@@ -20,7 +21,7 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-background dark:bg-background-dark">
       <div className="w-full max-w-md space-y-8">
-        <div className="flex justify-center"><span className="text-xl font-bold text-neutral-900 dark:text-white">Mizan<span className="text-teal">IQ</span></span></div>
+        <div className="flex justify-center"><Logo size="md" /></div>
         <div className="text-center">
           <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">{t("signupTitle")}</h2>
           <p className="mt-1 text-sm text-neutral-500">{t("signupSubtitle")}</p>
