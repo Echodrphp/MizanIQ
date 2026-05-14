@@ -17,9 +17,9 @@ const namingConvention = {
 };
 
 const examples = [
-  { level: "Campaign", example: "LevelEgypt_Conv_LAL1_May25" },
-  { level: "Ad Set", example: "Interest_AllPlacements_25-45_All" },
-  { level: "Ad", example: "Video_PainPoint_ShopNow_V2" },
+  { levelKey: "campaign", example: "LevelEgypt_Conv_LAL1_May25" },
+  { levelKey: "adSet", example: "Interest_AllPlacements_25-45_All" },
+  { levelKey: "ad", example: "Video_PainPoint_ShopNow_V2" },
 ];
 
 export default function NamingPage() {
@@ -45,24 +45,24 @@ export default function NamingPage() {
       {/* Naming Convention */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Type className="h-5 w-5 text-teal" />Naming Convention</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Type className="h-5 w-5 text-sky-500" />{t("convention")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-3">
             {Object.entries(namingConvention).map(([level, pattern]) => (
-              <div key={level} className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
-                <Badge variant="default" className="capitalize w-20 justify-center">{level}</Badge>
+              <div key={level} className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-[#0F1419]">
+                <Badge variant="default" className="w-24 justify-center">{t(`levels.${level === "adSet" ? "adSet" : level}`)}</Badge>
                 <code className="text-sm text-neutral-700 dark:text-neutral-300 font-mono">{pattern}</code>
               </div>
             ))}
           </div>
-          <div className="border-t border-neutral-200 dark:border-neutral-700 pt-4">
-            <h4 className="text-sm font-medium text-neutral-900 dark:text-white mb-3">Examples</h4>
+          <div className="border-t border-neutral-200 dark:border-[#2A3544] pt-4">
+            <h4 className="text-sm font-medium text-neutral-900 dark:text-white mb-3">{t("examples")}</h4>
             <div className="space-y-2">
               {examples.map((ex) => (
-                <div key={ex.level} className="flex items-center gap-3">
-                  <span className="text-xs text-neutral-500 w-20">{ex.level}</span>
-                  <code className="text-sm font-mono text-teal bg-teal/5 px-2 py-1 rounded">{ex.example}</code>
+                <div key={ex.levelKey} className="flex items-center gap-3">
+                  <span className="text-xs text-neutral-500 w-24">{t(`levels.${ex.levelKey}`)}</span>
+                  <code className="text-sm font-mono text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-500/10 px-2 py-1 rounded">{ex.example}</code>
                 </div>
               ))}
             </div>
@@ -73,7 +73,7 @@ export default function NamingPage() {
       {/* UTM Builder */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Type className="h-5 w-5 text-teal" />UTM Builder</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Type className="h-5 w-5 text-sky-500" />{t("utmBuilder")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -94,11 +94,11 @@ export default function NamingPage() {
               <Input value={utmContent} onChange={(e) => setUtmContent(e.target.value)} placeholder="ad_content" />
             </div>
           </div>
-          <div className="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700">
+          <div className="p-3 rounded-lg bg-neutral-50 dark:bg-[#0F1419] border border-neutral-200 dark:border-[#2A3544]">
             <div className="flex items-center justify-between gap-2">
               <code className="text-xs text-neutral-700 dark:text-neutral-300 break-all">{utmUrl}</code>
               <Button size="sm" variant="ghost" onClick={handleCopy}>
-                {copied ? <CheckCircle2 className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+                {copied ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
               </Button>
             </div>
           </div>

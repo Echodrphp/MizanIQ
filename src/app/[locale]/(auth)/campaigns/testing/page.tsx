@@ -54,75 +54,64 @@ const tests = [
   },
 ];
 
-const statusConfig = {
-  running: { color: "text-info", bg: "bg-info/10", label: "Running" },
-  completed: { color: "text-success", bg: "bg-success/10", label: "Completed" },
-  paused: { color: "text-warning", bg: "bg-warning/10", label: "Paused" },
-};
-
 export default function CreativeTestingPage() {
   const t = useTranslations("pages.testing");
 
   return (
     <div className="space-y-6">
       <PageHeader title={t("title")} description={t("description")}>
-        <Button size="sm"><Plus className="h-4 w-4 me-1" /> New Test</Button>
+        <Button size="sm"><Plus className="h-4 w-4 me-1" /> {t("newTest")}</Button>
       </PageHeader>
 
       <div className="space-y-4">
-        {tests.map((test) => {
-          const sConfig = statusConfig[test.status];
-          return (
-            <Card key={test.id}>
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="flex items-center gap-2">
-                      <FlaskConical className="h-5 w-5 text-teal" />{test.name}
-                    </CardTitle>
-                    <p className="text-sm text-neutral-500 mt-1">{test.client} • Started {test.startDate} • {test.daysRunning} days</p>
-                  </div>
-                  <Badge variant={test.status === "completed" ? "success" : test.status === "running" ? "info" : "warning"}>
-                    {sConfig.label}
-                  </Badge>
+        {tests.map((test) => (
+          <Card key={test.id}>
+            <CardHeader>
+              <div className="flex items-start justify-between flex-wrap gap-2">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <FlaskConical className="h-5 w-5 text-sky-500" />{test.name}
+                  </CardTitle>
+                  <p className="text-sm text-neutral-500 mt-1">
+                    {test.client} • {t("started")} {test.startDate} • {test.daysRunning} {t("days")}
+                  </p>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {/* Variants */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {test.variants.map((variant) => (
-                    <div key={variant.name} className={`p-4 rounded-lg border ${variant.winner ? "border-success/30 bg-success/5" : "border-neutral-200 dark:border-neutral-700"}`}>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-medium text-neutral-900 dark:text-white">{variant.name}</span>
-                        {variant.winner && <Badge variant="success">Leading</Badge>}
-                      </div>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div><span className="text-neutral-500">Spend</span><p className="font-semibold">${variant.spend}</p></div>
-                        <div><span className="text-neutral-500">CTR</span><p className="font-semibold">{variant.ctr}%</p></div>
-                        <div><span className="text-neutral-500">CPA</span><p className="font-semibold">${variant.cpa}</p></div>
-                        <div><span className="text-neutral-500">Conversions</span><p className="font-semibold">{variant.conversions}</p></div>
-                      </div>
+                <Badge variant={test.status === "completed" ? "success" : test.status === "running" ? "info" : "warning"}>
+                  {t(`status.${test.status}`)}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {test.variants.map((variant) => (
+                  <div key={variant.name} className={`p-4 rounded-lg border ${variant.winner ? "border-emerald-300/60 bg-emerald-50/50 dark:border-emerald-500/30 dark:bg-emerald-500/10" : "border-neutral-200 dark:border-[#2A3544]"}`}>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-medium text-neutral-900 dark:text-white">{variant.name}</span>
+                      {variant.winner && <Badge variant="success">{t("leading")}</Badge>}
                     </div>
-                  ))}
-                </div>
-
-                {/* Confidence & Recommendation */}
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50">
-                  <div className="shrink-0">
-                    <div className="text-center">
-                      <p className="text-lg font-bold text-neutral-900 dark:text-white">{test.confidence}%</p>
-                      <p className="text-[10px] text-neutral-500">Confidence</p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div><span className="text-neutral-500">{t("metrics.spend")}</span><p className="font-semibold">${variant.spend}</p></div>
+                      <div><span className="text-neutral-500">{t("metrics.ctr")}</span><p className="font-semibold">{variant.ctr}%</p></div>
+                      <div><span className="text-neutral-500">{t("metrics.cpa")}</span><p className="font-semibold">${variant.cpa}</p></div>
+                      <div><span className="text-neutral-500">{t("metrics.conversions")}</span><p className="font-semibold">{variant.conversions}</p></div>
                     </div>
                   </div>
-                  <div className="h-8 w-px bg-neutral-200 dark:bg-neutral-700" />
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{test.recommendation}</p>
-                </div>
+                ))}
+              </div>
 
-                <HonestTooltip meta={{ ...DEMO_META, confidence: test.confidence >= 90 ? "high" : test.confidence >= 60 ? "medium" : "low" }} />
-              </CardContent>
-            </Card>
-          );
-        })}
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-[#0F1419]">
+                <div className="shrink-0 text-center">
+                  <p className="text-lg font-bold text-neutral-900 dark:text-white">{test.confidence}%</p>
+                  <p className="text-[10px] text-neutral-500">{t("confidence")}</p>
+                </div>
+                <div className="h-8 w-px bg-neutral-200 dark:bg-[#2A3544]" />
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">{test.recommendation}</p>
+              </div>
+
+              <HonestTooltip meta={{ ...DEMO_META, confidence: test.confidence >= 90 ? "high" : test.confidence >= 60 ? "medium" : "low" }} />
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   );
